@@ -8,8 +8,6 @@ for (let key of animal_keys) {
   console.log(`${key} : ${animal[key]}`); // == animal[`name`],animal[`species`]
 }
 
-console.log();
-
 const animals_obj = [
   animal,
   { name: "dog", species: "canine" },
@@ -18,3 +16,5 @@ const animals_obj = [
   { name: "fish", species: "aquatic" },
   { name: "lizard", species: "reptile" },
 ];
+
+console.log();

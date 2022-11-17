@@ -29,3 +29,22 @@ const cars = ["BMW", "Volvo", "Mini"];
 for (let car of cars) {
   console.log(`${car}`);
 }
+cars.forEach((car) => console.log(`${car}`));
+
+// forEach
+const array1 = ["a", "b", "c"];
+array1.forEach((element) => console.log(element)); //제일 많이 쓰는 방법
+
+// Arrow Function
+//                (파라미터부분) => {}부분
+let arrowFunction = (element) => {
+  console.log(element);
+};
+
+array1.forEach(arrowFunction);
+
+// Normal Function
+function elementNormal(element) {
+  console.log(element);
+}
+array1.forEach(elementNormal);
