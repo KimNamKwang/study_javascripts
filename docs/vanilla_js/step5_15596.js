@@ -1,16 +1,14 @@
-const fs = require("fs");
-const filepath =
-  process.platform === "linux"
-    ? "/dev/stdin"
-    : "docs/vanilla_js/step5_15596.txt";
-let inputs = fs.readFileSync(filepath).toString().split(" ").map(Number);
+// 정수 n개가 주어졌을 때, n개의 합을 구하는 함수를 작성하시오.
 
-let loops = inputs.length;
-
-console.log(inputs);
-
-function sum(item_first, item_second) {
-  return item_first + item_second;
+// 배열로 정수를 받아서 처리
+function Sum(numbers) {
+  let result = 0;
+  for (let num of numbers) {
+    answer += num;
+  }
+  return result;
 }
 
-let sum_functions = sum(1, 3);
+let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let result = Sum(numbers);
+console.log(result);
