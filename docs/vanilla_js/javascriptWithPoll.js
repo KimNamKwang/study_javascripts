@@ -10,6 +10,7 @@ let inputs = fs
   .split("\n")
   .map(Number);
 
+// 입력
 const questions_list = [
   {
     questions_uid: "Q1",
@@ -63,31 +64,67 @@ let answerList = [
   { questionUid: "Q4", exampleUid: "E5" },
   { questionUid: "Q5", exampleUid: "E1" },
   { questionUid: "Q5", exampleUid: "E2" },
-  { questionUid: "Q5", exampleUid: "E3" }
-]
+  { questionUid: "Q5", exampleUid: "E3" },
+];
+
+// 처리
+
 // forEach
-// questions_list.forEach((args) => console.log(args));
+questions_list.forEach((args) => console.log(args));
 
 let arrowFunction = (element) => {
-
   console.log(element);
 };
 
+// if ((answerList[i].questionUid = "Q1")) {
+//   console.log(answerList[i].exampleUid);
+// }
+
+console.log();
+// 문항번호, 설문, 사용자 답 출력.
 for (let i = 0; i < questions_list.length; i++) {
-  console.log(questions_list[i].orders + ".");
-  for(let j = 0; j < i; j++) {
-    console.log(questions_list[j].questions + "\n");
-    if(questions_list[i].orders )
+  console.log(
+    questions_list[i].orders + "." + questions_list[i].questions + "\n"
+  );
+
+  while (answerList[i].questionUid == "Q1") {
+    for (let j = 0; j < questions_list.length; j++) {
+      if (answerList[i].exampleUid == example_list[i].example_uid) {
+        console.log(example_list[i].orders, example_list[i].example);
+      }
     }
+    break;
   }
-
-function printQuestions(...args) {
-  let restParam = (arg) => {
-    console.log(`${arg}`);
-  };
-
-  args.forEach(restParam);
+  // switch (answerList[i].questionUid) {
+  //   case "Q1":
+  //     break;
+  //   case "Q2":
+  //     console.log(answerList[i].exampleUid);
+  //     break;
+  //   case "Q3":
+  //     console.log(answerList[i].exampleUid);
+  //     break;
+  //   case "Q4":
+  //     console.log(answerList[i].exampleUid);
+  //     break;
+  //   case "Q5":
+  //     console.log(answerList[i].exampleUid);
+  //     break;
+  //   default:
+  //     break;
+  // }
+  // "답) " +
+  // inputs[i]
 }
+console.log();
+
+// function printQuestions(...args) {
+//   let restParam = (arg) => {
+//     console.log(`${arg}`);
+//   };
+
+//   args.forEach(restParam);
+// }
 
 // printQuestions(
 //   questions_list[0].questions_uid +
