@@ -1,6 +1,6 @@
-// 정수 n개가 주어졌을 때, n개의 합을 구하는 함수를 작성하시오.
+// 정수 n개가 주어졌을 때 n개의 합을 구하는 함수를 작성하시오.
 
-// 배열로 정수를 받아서 처리
+// 배열활용.
 function Sum(numbers) {
   let result = 0;
   for (let num of numbers) {
