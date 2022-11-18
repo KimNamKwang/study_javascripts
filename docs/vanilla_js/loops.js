@@ -37,9 +37,11 @@ array1.forEach((element) => console.log(element)); //제일 많이 쓰는 방법
 
 // Arrow Function
 //                (파라미터부분) => {}부분
-let arrowFunction = (element) => {
-  console.log(element);
+let arrowFunction = (element, index) => {
+  console.log(`${element}, index ${index}`);
 };
+// const array11 =
+// [{1,2,3},{4,5,6},{7,8,9}];
 
 array1.forEach(arrowFunction);
 

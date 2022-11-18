@@ -40,14 +40,14 @@ const questions_list = [
 ];
 
 const example_list = [
-  { example_uid: "E5", example: "매우 그렇다", orders: 5 },
-  { example_uid: "E1", example: "전혀 아니다", orders: 1 },
-  { example_uid: "E4", example: "그렇다", orders: 4 },
-  { example_uid: "E2", example: "아니다", orders: 2 },
-  { example_uid: "E3", example: "보통이다", orders: 3 },
+  { example_uid: "E5", example: "(5)매우 그렇다", orders: 5 },
+  { example_uid: "E1", example: "(1)전혀 아니다", orders: 1 },
+  { example_uid: "E4", example: "(4)그렇다", orders: 4 },
+  { example_uid: "E2", example: "(2)아니다", orders: 2 },
+  { example_uid: "E3", example: "(3)보통이다", orders: 3 },
 ];
 
-let answerList = [
+let answer_list = [
   { questionUid: "Q1", exampleUid: "E1" },
   { questionUid: "Q1", exampleUid: "E2" },
   { questionUid: "Q1", exampleUid: "E3" },
@@ -67,104 +67,17 @@ let answerList = [
   { questionUid: "Q5", exampleUid: "E3" },
 ];
 
-// 처리
-
-// forEach
-questions_list.forEach((args) => console.log(args));
-
-let arrowFunction = (element) => {
-  console.log(element);
-};
-
-// if ((answerList[i].questionUid = "Q1")) {
-//   console.log(answerList[i].exampleUid);
-// }
-
-console.log();
-// 문항번호, 설문, 사용자 답 출력.
-for (let i = 0; i < questions_list.length; i++) {
-  console.log(
-    questions_list[i].orders + "." + questions_list[i].questions + "\n"
-  );
-
-  while (answerList[i].questionUid == "Q1") {
-    for (let j = 0; j < questions_list.length; j++) {
-      if (answerList[i].exampleUid == example_list[i].example_uid) {
-        console.log(example_list[i].orders, example_list[i].example);
-      }
-    }
-    break;
+let idx;
+let compare; // 비교변수
+for (idx = 0; idx < answer_list.length; idx++) {
+  //let answer_string = 에다가 `== : ${answer_list[idx]["exampleUid"]}` 을 담아서 아래 콘솔에서는 변수로 출력하기
+  if (compare != answer_list[idx]["questionUid"]) {
+    console.log(`!= : ${answer_list[idx]["questionUid"]}`);
+    console.log(`!= : ${answer_list[idx]["exampleUid"]}`);
+  } else {
+    console.log(`== : ${answer_list[idx]["exampleUid"]}`);
   }
-  // switch (answerList[i].questionUid) {
-  //   case "Q1":
-  //     break;
-  //   case "Q2":
-  //     console.log(answerList[i].exampleUid);
-  //     break;
-  //   case "Q3":
-  //     console.log(answerList[i].exampleUid);
-  //     break;
-  //   case "Q4":
-  //     console.log(answerList[i].exampleUid);
-  //     break;
-  //   case "Q5":
-  //     console.log(answerList[i].exampleUid);
-  //     break;
-  //   default:
-  //     break;
-  // }
-  // "답) " +
-  // inputs[i]
+  compare = answer_list[idx]["questionUid"];
 }
-console.log();
 
-// function printQuestions(...args) {
-//   let restParam = (arg) => {
-//     console.log(`${arg}`);
-//   };
-
-//   args.forEach(restParam);
-// }
-
-// printQuestions(
-//   questions_list[0].questions_uid +
-//     "." +
-//     questions_list[0].questions +
-//     "\n" +
-//     "답) " +
-//     questions_list[0].orders
-// );
-// printQuestions(
-//   questions_list[1].questions_uid +
-//     "." +
-//     questions_list[1].questions +
-//     "\n" +
-//     "답) " +
-//     questions_list[1].orders
-// );
-// printQuestions(
-//   questions_list[2].questions_uid +
-//     "." +
-//     questions_list[2].questions +
-//     "\n" +
-//     "답) " +
-//     questions_list[2].orders
-// );
-// printQuestions(
-//   questions_list[3].questions_uid +
-//     "." +
-//     questions_list[3].questions +
-//     "\n" +
-//     "답) " +
-//     questions_list[3].orders
-// );
-// printQuestions(
-//   questions_list[4].questions_uid +
-//     "." +
-//     questions_list[4].questions +
-//     "\n" +
-//     "답) " +
-//     questions_list[4].orders
-// );
-
-// console.log("--------------- 설문자 선택 ----------------");
+console.log(`answer_list.length : ${answer_list.length}, idx : ${idx}`);
