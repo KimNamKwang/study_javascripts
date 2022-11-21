@@ -30,12 +30,18 @@
       let siblingsUnderBody = document.querySelectorAll("body > *");
       siblingsUnderBody.forEach((elements) => console.log(elements));
 
-      // .list 출력하기
+      // .list 와 .item 각각 출력하기
       let lists = document.querySelectorAll(".list");
-      console.log(lists);
-      // .item  출력하기
-      let Items = document.querySelectorAll(".item");
-      console.log(Items);
+      console.log("IT회사 종류");
+      lists.forEach((list, index) => {
+        console.log(list);
+      });
+
+      let items = document.querySelectorAll(".item");
+      console.log("과일 종류");
+      items.forEach((item, index) => {
+        console.log(item);
+      });
     </script>
   </body>
 </html>
