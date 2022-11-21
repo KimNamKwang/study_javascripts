@@ -3,123 +3,81 @@ const filepath =
   process.platform === "linux"
     ? "/dev/stdin"
     : "docs/vanilla_js/javascriptWithPoll.txt";
-
 let inputs = fs
   .readFileSync(filepath)
   .toString()
   .trim()
   .split("\n")
   .map(Number);
-let str = "";
 
-// 처리
+// 입력
+const questions_list = [
+  {
+    questions_uid: "Q1",
+    questions: "해당 매장을 방문시 매장은 청결 하였습니까?",
+    orders: 1,
+  },
+  {
+    questions_uid: "Q2",
+    questions: "주문시 직원은 고객님께 친절 하였습니까?",
+    orders: 2,
+  },
+  {
+    questions_uid: "Q3",
+    questions: "주문하신 음료가 나오기까지 시간이 적당하였습니까?",
+    orders: 3,
+  },
+  {
+    questions_uid: "Q4",
+    questions: "직원이 제조한 음료에 대해 맛은 좋았습니까?",
+    orders: 4,
+  },
+  {
+    questions_uid: "Q5",
+    questions: "해당 매장을 다음에도 재방문 하실 의향이 있으십니까?",
+    orders: 5,
+  },
+];
 
-// forEach
-// questions_list.forEach((args) => console.log(args));
+const example_list = [
+  { example_uid: "E5", example: "(5)매우 그렇다", orders: 5 },
+  { example_uid: "E1", example: "(1)전혀 아니다", orders: 1 },
+  { example_uid: "E4", example: "(4)그렇다", orders: 4 },
+  { example_uid: "E2", example: "(2)아니다", orders: 2 },
+  { example_uid: "E3", example: "(3)보통이다", orders: 3 },
+];
 
-// let arrowFunction = (element) => {
-//   console.log(element);
-// };
+let answer_list = [
+  { questionUid: "Q1", exampleUid: "E1" },
+  { questionUid: "Q1", exampleUid: "E2" },
+  { questionUid: "Q1", exampleUid: "E3" },
+  { questionUid: "Q2", exampleUid: "E1" },
+  { questionUid: "Q2", exampleUid: "E2" },
+  { questionUid: "Q2", exampleUid: "E3" },
+  { questionUid: "Q2", exampleUid: "E4" },
+  { questionUid: "Q3", exampleUid: "E1" },
+  { questionUid: "Q3", exampleUid: "E2" },
+  { questionUid: "Q4", exampleUid: "E1" },
+  { questionUid: "Q4", exampleUid: "E2" },
+  { questionUid: "Q4", exampleUid: "E3" },
+  { questionUid: "Q4", exampleUid: "E4" },
+  { questionUid: "Q4", exampleUid: "E5" },
+  { questionUid: "Q5", exampleUid: "E1" },
+  { questionUid: "Q5", exampleUid: "E2" },
+  { questionUid: "Q5", exampleUid: "E3" },
+];
 
-// if ((answerList[i].questionUid = "Q1")) {
-//   console.log(answerList[i].exampleUid);
-// }
-
-console.log();
-// 문항번호, 설문, 사용자 답 출력.
-for (let i = 0; i < questions_list.length; i++) {
-  console.log(
-    questions_list[i].orders + "." + questions_list[i].questions + "\n"
-  );
-
-  // if (answerList[i].questionUid == "Q1" && ) {
-  //   console.log(answerList[i].orders);
-  // }
-  for (let j = 0; j < answerList.length; j++) {
-    if (answerList[j].questionUid == "Q1") {
-      for (let a = 0; a < example_list.length; a++) {
-        if (answerList[j].exampleUid == example_list[a].example_uid) {
-          console.log(example_list[a].example);
-        }
-      }
-    } else if (answerList[j].questionUid == "Q2") {
-      for (let a = 0; a < example_list.length; a++) {
-        if (answerList[j].exampleUid == example_list[a].example_uid) {
-          console.log(example_list[a].example);
-        }
-      }
-    } else if (answerList[j].questionUid == "Q3") {
-      for (let a = 0; a < example_list.length; a++) {
-        if (answerList[j].exampleUid == example_list[a].example_uid) {
-          console.log(example_list[a].example);
-        }
-      }
-    } else if (answerList[j].questionUid == "Q4") {
-      for (let a = 0; a < example_list.length; a++) {
-        if (answerList[j].exampleUid == example_list[a].example_uid) {
-          console.log(example_list[a].example);
-        }
-      }
-    } else if (answerList[j].questionUid == "Q5") {
-      for (let a = 0; a < example_list.length; a++) {
-        if (answerList[j].exampleUid == example_list[a].example_uid) {
-          console.log(example_list[a].example);
-        }
-      }
-    }
+let idx;
+let compare; // 비교변수
+for (idx = 0; idx < answer_list.length; idx++) {
+  //let answer_string = 에다가 `== : ${answer_list[idx]["exampleUid"]}` 을 담아서 아래 콘솔에서는 변수로 출력하기
+  if (compare != answer_list[idx]["questionUid"]) {
+    console.log(`!= : ${answer_list[idx]["questionUid"]}`);
+    console.log(`!= : ${answer_list[idx]["exampleUid"]}`);
+  } else {
+    console.log(`== : ${answer_list[idx]["exampleUid"]}`);
   }
-  // "답) " +
-  // inputs[i]
+  compare = answer_list[idx]["questionUid"];
 }
-console.log();
 
-// function printQuestions(...args) {
-//   let restParam = (arg) => {
-//     console.log(`${arg}`);
-//   };
-
-//   args.forEach(restParam);
-// }
-
-// printQuestions(
-//   questions_list[0].questions_uid +
-//     "." +
-//     questions_list[0].questions +
-//     "\n" +
-//     "답) " +
-//     questions_list[0].orders
-// );
-// printQuestions(
-//   questions_list[1].questions_uid +
-//     "." +
-//     questions_list[1].questions +
-//     "\n" +
-//     "답) " +
-//     questions_list[1].orders
-// );
-// printQuestions(
-//   questions_list[2].questions_uid +
-//     "." +
-//     questions_list[2].questions +
-//     "\n" +
-//     "답) " +
-//     questions_list[2].orders
-// );
-// printQuestions(
-//   questions_list[3].questions_uid +
-//     "." +
-//     questions_list[3].questions +
-//     "\n" +
-//     "답) " +
-//     questions_list[3].orders
-// );
-// printQuestions(
-//   questions_list[4].questions_uid +
-//     "." +
-//     questions_list[4].questions +
-//     "\n" +
-//     "답) " +
-//     questions_list[4].orders
-// );
-
-// console.log("--------------- 설문자 선택 ----------------");
+console.log(`answer_list.length : ${answer_list.length}, idx : ${idx}`);

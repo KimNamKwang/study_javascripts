@@ -72,8 +72,8 @@ let compare; // 비교변수
 for (idx = 0; idx < answer_list.length; idx++) {
   //let answer_string = 에다가 `== : ${answer_list[idx]["exampleUid"]}` 을 담아서 아래 콘솔에서는 변수로 출력하기
   if (compare != answer_list[idx]["questionUid"]) {
-    console.log(`!= : ${answer_list[idx]["questionUid"]}`);
-    console.log(`!= : ${answer_list[idx]["exampleUid"]}`);
+    console.log(`${questions_list[idx]["questions"]}`);
+    console.log(`${example_list[idx]["example"]}`);
   } else {
     console.log(`== : ${answer_list[idx]["exampleUid"]}`);
   }
