@@ -31,16 +31,26 @@
       siblingsUnderBody.forEach((elements) => console.log(elements));
 
       // .list 와 .item 각각 출력하기
-      let lists = document.querySelectorAll(".list");
-      console.log("IT회사 종류");
-      lists.forEach((list, index) => {
-        console.log(list);
-      });
+      //   let lists = document.querySelectorAll(".list");
+      //   console.log("IT회사 종류");
+      //   lists.forEach((list, index) => {
+      //     console.log(list);
+      //   });
 
-      let items = document.querySelectorAll(".item");
-      console.log("과일 종류");
-      items.forEach((item, index) => {
-        console.log(item);
+      //   let items = lists[1].querySelectorAll(".item");
+      //   console.log("과일 종류");
+      //   items.forEach((item, index) => {
+      //     console.log(item);
+      //   });
+
+      let queryLists = document.querySelectorAll(".list");
+      queryLists.forEach((list, index) => {
+        console.log(`${index} : ${list.outerHTML}`);
+        // queryLists[0].querySelectorAll(".item");
+        let queryItems = list.querySelectorAll(".item");
+        queryItems.forEach((item, index) => {
+          console.log(`${index} : ${item.outerHTML}`);
+        });
       });
     </script>
   </body>
