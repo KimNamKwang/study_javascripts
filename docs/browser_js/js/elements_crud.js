@@ -28,4 +28,26 @@ const productsData = [
 
 let snacks = document.querySelector("#list");
 let insertProducts = `<div id="list">${productsData["title"]} ${productsData["weight"]}</div>`;
-snacks.innerHTML = insertProducts;
+
+for (let i = 0; i < productsData.length; i++) {
+  `<div id="list">${productsData[i]["title"]} ${productsData[i]["weight"]}</div>`;
+}
+
+let element1 = document.createElement("li");
+let element2 = document.createElement("li");
+let element3 = document.createElement("li");
+
+let HelloText1 = document.createTextNode(
+  `${productsData[0]["title"]} ${productsData[0]["weight"]}`
+);
+
+element1.appendChild(HelloText1);
+snacks.appendChild(element);
+
+// snacks.innerHTML;
+//create element
+// let element = document.createElement("div");
+// let HelloText = document.createTextNode("Hello");
+
+// element.appendChild(HelloText);
+// queryinner.appendChild(element);
