@@ -2,7 +2,7 @@ const fs = require("fs");
 const filepath =
   process.platform === "linux"
     ? "/dev/stdin"
-    : "docs/vanilla_js/javascriptWithPoll.txt";
+    : "docs/vanilla_js/cases/javascriptWithPoll.txt";
 let inputs = fs
   .readFileSync(filepath)
   .toString()

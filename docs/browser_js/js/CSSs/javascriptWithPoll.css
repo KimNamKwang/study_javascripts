@@ -1,0 +1,11 @@
+.button {
+  background-color: darkgreen;
+  color: white;
+  border: none;
+  height: 25px;
+  border-radius: 10%;
+}
+
+.questionAnswers {
+  font-size: medium;
+}

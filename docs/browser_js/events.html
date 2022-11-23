@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../browser_js/js/CSSs/events.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>property방식</h3>
+    <div id="clickme" onclick="alert('click on Me')">
+      Click Me! with alert()
+    </div>
+    <div id="changetext" onclick="changeText()">Click Me!</div>
+
+    <h3>Listener</h3>
+    <!--되도록 이 방식 권장. 위는 하드코딩적-->]
+    <!--.addEventListener가 위의 property로 하는 방식을 프로그래밍적으로 사용하게 해줌-->
+    <div id="clickalert">Click Me! with alert()</div>
+    <div id="targetText" onclick="changeText()">Target Change Text</div>
+    <button id="buttonChangeText">Change Text!</button>
+
+    <script src="./js/events.js"></script>
+  </body>
+</html>
