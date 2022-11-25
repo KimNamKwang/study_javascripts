@@ -127,11 +127,12 @@ console.log(`${polls}`);
 //1. E1
 //2. E2
 //...
-function getQuestionsByUid(question_uid) {
-  question_desc = []; //내부코드를 잘못 짬. 수정해야함.
-  for (let idx = 0; idx < questions_list.length; idx++) {
-    if (question_uid == questions_list[idx].questions_uid) {
-      (question_desc = questions_list[idx].order), questions_list[idx].question;
+function getQuestionByUid(question_uid) {
+  let question_desc;
+  for (let idx = 0; ; idx++) {
+    if (question_uid == questions_list[idx]["questions_uid"]) {
+      question_desc = `${questions_list[idx]["order"]}. ${questions_list[idx]["question"]}`;
+      break;
     }
   }
   return question_desc;
@@ -140,7 +141,7 @@ function getQuestionsByUid(question_uid) {
 //iterator방법
 for (/*item*/ poll of polls) {
   // poll == polls[idx]
-  console.log(`${poll["questions_uid"]}`);
+  console.log(`${getQuestionByUid(poll["questions_uid"])}`);
   let answer_uids = poll["answer_uids"];
   answer_uids.forEach((answer_uid /*item도 가능*/, index) => {
     console.log(`${index + 1}. ${answer_uid}`);
