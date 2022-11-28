@@ -1,0 +1,22 @@
+/* * {
+  border: 1px solid gray;
+} */
+
+.contents {
+  display: flex;
+}
+
+img {
+  size: 30px;
+  width: 200px;
+  height: 150px;
+  padding: 0.5rem;
+}
+
+button {
+  padding: 0.5rem;
+  width: 100%;
+  color: white;
+  text-align: center;
+  background-color: rgb(4, 170, 109);
+}
