@@ -9,11 +9,11 @@ addBtn.addEventListener("click", (event) => {
   if (queryInput.value != "" && queryInput.value != "undefined") {
     taskName = queryInput.value;
     /* <ul>에 newTask추가 */
-    newTask = `<li>
+    newTask = `<li class="listDeco">
     <div>
     ${taskName}
     <span>
-            <i class="material-icons delete" id="favorireBtn">favorite</i>
+            <i class="material-icons favorite" id="favoriteBtn">favorite</i>
             </span>
             <span>
             <i class="material-icons delete" id="deleteBtn">delete</i>
@@ -35,11 +35,11 @@ queryKeyDown.addEventListener("keydown", (event) => {
       //   }
       taskName = queryInput.value;
       /* <ul>에 newTask추가 */
-      newTask = `<li>
+      newTask = `<li class="listDeco">
               <div>
             ${taskName}
             <span>
-            <i class="material-icons delete" id="favorireBtn">favorite</i>
+            <i class="material-icons delete" id="favoriteBtn">favorite</i>
             </span>
             <span>
             <i class="material-icons delete" id="deleteBtn">delete</i>

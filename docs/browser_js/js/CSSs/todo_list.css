@@ -1,15 +1,18 @@
-* {
+/* * {
   border: 1px solid gray;
-}
+} */
 
 #btnAdd:hover {
   cursor: pointer;
 }
 #btnAdd {
   background-color: aqua;
-  width: 6rem;
+  width: 12rem;
   height: 3rem;
-  border-radius: 5%;
+  border-radius: 3%;
+  margin-left: 1.5rem;
+  font-size: 25px;
+  color: crimson;
 }
 
 .delete:hover {
@@ -21,18 +24,36 @@
 }
 
 .title {
-  color: aqua;
-  background-color: purple;
+  color: chocolate;
+  background-color: cadetblue;
   text-align: center;
   height: 5rem;
+  font-size: 30px;
 }
 
-li {
-  text-decoration: none;
+ul {
+  list-style-type: none;
 }
 
 #addNewTask {
   border: 1px solid black;
   height: 50px;
   width: 70%;
+  font-size: 20px;
+}
+
+#favoriteBtn {
+  color: red;
+  float: right;
+}
+
+#deleteBtn {
+  color: red;
+  float: right;
+}
+
+.listDeco {
+  border: 1px solid black;
+  padding: 2rem;
+  font-size: 18px;
 }
