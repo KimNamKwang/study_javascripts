@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./js/CSSs/todo_list.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="title">To Do List</div>
+    <div>
+      <input
+        type="text"
+        name="addTask"
+        id="addNewTask"
+        value="Add a new task"
+        required
+      />
+      <button id="btnAdd">Add</button>
+    </div>
+    <ul class="todo-list">
+      <li>
+        <div>
+          DB 설계서
+          <span>
+            <i class="material-icons favorite" id="favoriteBtn">favorite</i>
+          </span>
+          <span>
+            <i class="material-icons delete" id="deleteBtn">delete</i>
+          </span>
+        </div>
+      </li>
+    </ul>
+
+    <script src="./js/todo_list.js"></script>
+  </body>
+</html>

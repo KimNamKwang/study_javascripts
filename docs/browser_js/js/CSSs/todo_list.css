@@ -1,0 +1,38 @@
+* {
+  border: 1px solid gray;
+}
+
+#btnAdd:hover {
+  cursor: pointer;
+}
+#btnAdd {
+  background-color: aqua;
+  width: 6rem;
+  height: 3rem;
+  border-radius: 5%;
+}
+
+.delete:hover {
+  cursor: pointer;
+}
+
+.favorite:hover {
+  cursor: pointer;
+}
+
+.title {
+  color: aqua;
+  background-color: purple;
+  text-align: center;
+  height: 5rem;
+}
+
+li {
+  text-decoration: none;
+}
+
+#addNewTask {
+  border: 1px solid black;
+  height: 50px;
+  width: 70%;
+}
