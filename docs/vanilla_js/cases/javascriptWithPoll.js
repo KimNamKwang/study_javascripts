@@ -1,172 +1,202 @@
-const fs = require("fs");
-const filepath =
-  process.platform === "linux"
-    ? "/dev/stdin"
-    : "docs/vanilla_js/cases/javascriptWithPoll.txt";
-let inputs = fs
-  .readFileSync(filepath)
-  .toString()
-  .trim()
-  .split("\n")
-  .map(Number);
-
-// 입력
 const questions_list = [
   {
+    question: "해당 매장을 방문시 매장은 청결 하였습니까?",
     questions_uid: "Q1",
-    questions: "해당 매장을 방문시 매장은 청결 하였습니까?",
-    orders: 1,
+    order: 1,
   },
   {
-    questions_uid: "Q4",
-    questions: "직원이 제조한 음료에 대해 맛은 좋았습니까?",
-    orders: 4,
-  },
-  {
+    question: "주문시 직원은 고객님께 친절 하였습니까?",
     questions_uid: "Q2",
-    questions: "주문시 직원은 고객님께 친절 하였습니까?",
-    orders: 2,
+    order: 2,
   },
   {
-    questions_uid: "Q5",
-    questions: "해당 매장을 다음에도 재방문 하실 의향이 있으십니까?",
-    orders: 5,
-  },
-  {
+    question: "주문하신 음료가 나오기까지 시간이 적당하였습니까?",
     questions_uid: "Q3",
-    questions: "주문하신 음료가 나오기까지 시간이 적당하였습니까?",
-    orders: 3,
+    order: 3,
+  },
+  {
+    question: "해당 매장을 다음에도 재방문 하실 의향이 있으십니까?",
+    questions_uid: "Q5",
+    order: 4,
+  },
+  {
+    question: "직원이 제조한 음료에 대해 맛은 좋았습니까?",
+    questions_uid: "Q4",
+    order: 5,
   },
 ];
-// 문항 배열 정렬하기
-questions_list.sort((a, b) => a.orders - b.orders);
 
-// 설문 답항
-const example_list = [
-  { example_uid: "E5", example: "매우 그렇다", orders: 5 },
-  { example_uid: "E1", example: "전혀 아니다", orders: 1 },
-  { example_uid: "E4", example: "그렇다", orders: 4 },
-  { example_uid: "E2", example: "아니다", orders: 2 },
-  { example_uid: "E3", example: "보통이다", orders: 3 },
-];
-// 답항 배열 정렬하기
-example_list.sort((a, b) => a.orders - b.orders);
-
-// 문항-답항
-const answers = [
-  { questions_uid: "Q1", example_uid: "E1" },
-  { questions_uid: "Q1", example_uid: "E2" },
-  { questions_uid: "Q1", example_uid: "E3" },
-
-  { questions_uid: "Q2", example_uid: "E1" },
-  { questions_uid: "Q2", example_uid: "E2" },
-  { questions_uid: "Q2", example_uid: "E3" },
-  { questions_uid: "Q2", example_uid: "E4" },
-
-  { questions_uid: "Q3", example_uid: "E1" },
-  { questions_uid: "Q3", example_uid: "E2" },
-
-  { questions_uid: "Q4", example_uid: "E1" },
-  { questions_uid: "Q4", example_uid: "E2" },
-  { questions_uid: "Q4", example_uid: "E3" },
-  { questions_uid: "Q4", example_uid: "E4" },
-  { questions_uid: "Q4", example_uid: "E5" },
-
-  { questions_uid: "Q5", example_uid: "E1" },
-  { questions_uid: "Q5", example_uid: "E2" },
-  { questions_uid: "Q5", example_uid: "E3" },
+const answer_list = [
+  { answer: "전혀 아니다", answer_uid: "E1", order: 1 },
+  { answer: "아니다", answer_uid: "E2", order: 2 },
+  { answer: "보통이다", answer_uid: "E3", order: 3 },
+  { answer: "그렇다", answer_uid: "E4", order: 4 },
+  { answer: "매우 그렇다", answer_uid: "E5", order: 5 },
 ];
 
-// let idx = 0;
-// let compare = 0; // 비교변수
-// for (idx = 0; idx < answer_list.length; idx++) {
-//   //let answer_string = 에다가 `== : ${answer_list[idx]["exampleUid"]}` 을 담아서 아래 콘솔에서는 변수로 출력하기
-//   if (compare != answer_list[idx]["questionUid"]) {
-//     console.log(`${questions_list[idx]["orders"]}`);
-//     console.log(`${questions_list[idx]["questions"]}`);
-//     console.log(`${example_list[idx]["example"]}`);
-//   } else {
-//     console.log(`${example_list[idx]["example"]}`);
-//   }
-//   compare = answer_list[idx + 1]["questionUid"];
-// }
+const questions_answers = [
+  { questions_uid: "Q1", answer_uid: "E1" },
+  { questions_uid: "Q1", answer_uid: "E2" },
+  //   { questions_uid: "Q1", answer_uid: "E3" },
+  { questions_uid: "Q2", answer_uid: "E1" },
+  { questions_uid: "Q2", answer_uid: "E2" },
+  { questions_uid: "Q2", answer_uid: "E3" },
+  //   { questions_uid: "Q2", answer_uid: "E4" },
+  { questions_uid: "Q3", answer_uid: "E1" },
+  { questions_uid: "Q3", answer_uid: "E2" },
+  { questions_uid: "Q4", answer_uid: "E1" },
+  { questions_uid: "Q4", answer_uid: "E2" },
+  { questions_uid: "Q4", answer_uid: "E3" },
+  { questions_uid: "Q4", answer_uid: "E4" },
+  { questions_uid: "Q4", answer_uid: "E5" },
+  { questions_uid: "Q5", answer_uid: "E1" },
+  { questions_uid: "Q5", answer_uid: "E2" },
+  { questions_uid: "Q5", answer_uid: "E3" },
+];
+// 예상 묶음 데이터
+// [
+//  [Q1, E1, E2]      -> {questions_uid:Q1, answer_uids:[E1, E2]}
+//  [Q2, E1, E2, E3]  -> {questions_uid:Q2, answer_uids:[E1, E2, E3]}
+//  [Q3, E1, E2]      -> {questions_uid:Q3, answer_uids:[E1, E2]}
+//  [Q4, E1, E2, E3, E4, E5]  -> {questions_uid:Q4, answer_uids:[E1, E2, E3, E4, E5]}
+//  [Q5, E1, E2, E3]  -> {questions_uid:Q5, answer_uids:[E1, E2, E3]}
+// ]
+// 1차 방식 : [Q1, Q2, Q3, Q4, Q5]
+// 2차 방식 : Array in Array [[Q1, E1, E2], [Q2, E1, E2, E3] ...]]
+// 3차 방식 : Object in Array [{questions_uid:Q1, answer_uids:[E1, E2]}, ...]
+let polls = []; // 전체 묶음
+let question_compare;
+let questions = {}; // 내부 묶음
+let answer_uids = []; // 내부 설문 답변 묶음
+for (let idx = 0; idx < questions_answers.length; idx++) {
+  if (question_compare != questions_answers[idx]["questions_uid"]) {
+    if (Object.keys(questions).length > 0) {
+      questions["answer_uids"] = answer_uids;
+      polls.push(questions);
+      questions = {};
+      answer_uids = [];
+    }
 
-// console.log(`answer_list.length : ${answer_list.length}, idx : ${idx}`);
-
-let question_uid;
-let user_answer;
-let combine_arr = [];
-
-// 함수들
-
-// 문항 출력 : 인덱스에 맞는 문항을 출력하고 문항 uid 반환하는 함수
-function print_question(i) {
-  console.log(`${questions_list[i].orders}. ${questions_list[i].questions}`);
-  question_uid = questions_list[i].questions_uid;
-  return question_uid;
-}
-
-// q_uid와 일치하는 답항들을 출력하는 함수
-function match_quid_auid(question_uid) {
-  // q_uid와 일치하는 e_uid_list 배열에 담기
-  let e_uid_list = answers.filter((e) => e.questions_uid === question_uid);
-  // 문항 uid와 매칭되는 답항 uid answers에서 찾기
-  for (let i = 0; i < e_uid_list.length; i++) {
-    // 매칭되는 답항 uid 리스트 중에서 하나 뽑아서 e_uid에 담기 - E1
-    let e_uid = e_uid_list[i].example_uid;
-    // e_uid(E1)에 해당되는 example 출력하기
-    if (example_list[i].example_uid === e_uid) {
-      console.log(`(${example_list[i].orders}) ${example_list[i].example}`);
+    // console.log(`!= : ${questions_answers[idx]["questions_uid"]}`);
+    // console.log(`!= : ${questions_answers[idx]["answer_uid"]}`);
+    questions["questions_uid"] = questions_answers[idx]["questions_uid"];
+    answer_uids.push(questions_answers[idx]["answer_uid"]);
+  } else {
+    // console.log(`== : ${questions_answers[idx]["answer_uid"]}`);
+    answer_uids.push(questions_answers[idx]["answer_uid"]);
+    if (idx + 1 >= questions_answers.length) {
+      questions["answer_uids"] = answer_uids;
+      polls.push(questions);
     }
   }
-  console.log();
+  question_compare = questions_answers[idx]["questions_uid"]; // 이전 uid 입력
 }
+// console.log(`${polls}`); //
 
-// 인덱스에 맞는 사용자 답안 출력하는 함수
-function print_user_answer(i) {
-  let user_answer = inputs[i];
-  console.log(`답) ${user_answer}\n`);
-  return user_answer;
-}
+// 출력
+// [
+//  {questions_uid:Q1, answer_uids:[E1, E2]},
+//  {questions_uid:Q2, answer_uids:[E1, E2, E3]},
+//  ...]
+// polls[0]['questions_uid']
+// polls[0]['answer_uids'][0]
+// polls[0]['answer_uids'][1]
 
-// 사용자 답안 번호와 orders가 일치하는 exmaple을 찾아서 반환하는 함수
-function match_user_answer(user_answer) {
-  // user_answer와 orders가 일치하는 example
-  for (let i = 0; i < example_list.length; i++) {
-    if (example_list[i].orders === user_answer) {
-      let user_example = example_list[i].example;
-      return user_example;
+// polls[1]['questions_uid']
+// polls[1]['answer_uids'][0]
+// polls[1]['answer_uids'][1]
+// polls[1]['answer_uids'][2]
+
+// 설문 문항을 가져오는 function
+// Q1. 해당 매장을 방문시 매장은 청결 하였습니까?
+// 1. E1
+// 2. E2
+// Q2. 주문시 직원은 고객님께 친절 하였습니까?
+// ...
+
+function getQuestionByUid(question_uid) {
+  // questions_uid = 'Q1'
+  let question_desc = "";
+  for (question of questions_list) {
+    if (question["questions_uid"] === question_uid) {
+      question_desc = question["question"];
+      break;
     }
+  }
+  return question_desc;
+}
+
+function getAnswerByUid(answer_uid) {
+  let answer_desc = "";
+  for (answer of answer_list) {
+    if (answer["answer_uid"] === answer_uid) {
+      answer_desc = answer["answer"];
+      break;
+    }
+  }
+  return answer_desc;
+}
+
+for (poll of polls) {
+  let question_desc = getQuestionByUid(poll["questions_uid"]);
+  // console.log(`${poll["questions_uid"]}. ${question_desc}`); // == polls[idx]
+  let answer_uids = poll["answer_uids"];
+  answer_uids.forEach((answer_uid, index) => {
+    // answers
+    // console.log(`${index + 1}. ${getAnswerByUid(answer_uid)}`);
+  });
+}
+
+// Event handlers
+// Next 클릭 시 순서 있게 설문 표시
+// 대상 변수는 polls
+let queryNext = document.querySelector("#next");
+queryNext.addEventListener("click", nextPollContent);
+
+let index = 0;
+function nextPollContent() {
+  if (index >= polls.length) {
+    window.alert("Done Poll !");
+  } else {
+    setPollContent(index);
+    index++;
   }
 }
 
-// 문항, 답항, 사용자 답안 출력
-for (let i = 0; i < questions_list.length; i++) {
-  question_uid = print_question(i);
-  match_quid_auid(question_uid);
-  user_answer = print_user_answer(i);
-
-  //  2. 처리
-  //  : 문항, 설문 답항, 답변이 각각 분리되어있는 것을 매칭
-  user_example = match_user_answer(user_answer);
-  combine_arr[i] = {
-    q_order: questions_list[i].orders,
-    question: questions_list[i].questions,
-    user_answer: user_answer,
-    user_example: user_example,
-  };
+function setPollContent(idx) {
+  let queryContent = document.querySelector("#poll-contents");
+  // polls[0]["questions_uid"]; // 설문 문항
+  // polls[0]["answer_uids"]; // 설문 답항 묶음
+  // 1. 매장 상태가 좋은가요 ?
+  //  (1) 예
+  //  (2) 아니다.
+  // console.log(getQuestionByUid(polls[idx]["questions_uid"]));
+  let desc = `<div>${idx + 1}. ${getQuestionByUid(
+    polls[idx]["questions_uid"]
+  )}</div>`;
+  polls[idx]["answer_uids"].forEach((answer_uid, i) => {
+    // answers
+    // console.log(`${idx + 1}. ${getAnswerByUid(answer_uid)}`);
+    desc =
+      desc +
+      `<div><input type="radio" value="${answer_uid}" name=${
+        polls[idx]["questions_uid"]
+      } id="${answer_uid}"
+      ></input> <label for="${answer_uid}">(${i + 1}) ${getAnswerByUid(
+        answer_uid
+      )}</label></div>`;
+  });
+  queryContent.innerHTML = desc;
 }
 
-// 3. 출력
-// : 설문 선택이 끝나면 실제로 사용자가 선택한 것을 출력
-console.log(`--------------------- 설문자 선택 --------------------------`);
-// 출력내용 : 문항orders, question, 사용자답안번호, example
+let queryPrev = document.querySelector("#prev");
+queryPrev.addEventListener("click", prevPollContent);
 
-combine_arr.forEach(function (combine, idx) {
-  console.log(
-    `${combine_arr[idx].q_order}. ${combine_arr[idx].question}\n (${combine_arr[idx].user_answer}) ${combine_arr[idx].user_example}\n`
-  );
-});
-
-console.log(`이용해주셔서 감사합니다!`);
-console.log();
+function prevPollContent() {
+  if (index <= 0) {
+    window.alert("None Poll !");
+  } else {
+    index--;
+    setPollContent(index);
+  }
+}

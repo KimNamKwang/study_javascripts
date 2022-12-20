@@ -11,9 +11,9 @@ inputs.sort(function (a, b) {
 
 console.log(inputs);
 
-// console.log();
-for (i = 1; i <= inputs.length; i++) {
-  if (i == inputs[i - 1]) {
+console.log();
+for (let i = 1; i <= inputs.length + 2; i++) {
+  if (i in inputs) {
     console.log(i);
   }
 }
