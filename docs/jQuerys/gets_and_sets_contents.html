@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.slim.js"
+      integrity="sha256-DKU1CmJ8kBuEwumaLuh9Tl/6ZB6jzGOBV/5YpNE2BWc="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <h3>gets_and_sets_contents</h3>
+
+    <h3>Attributes</h3>
+    <div><a href="https://www.google.co.kr/">google</a></div>
+    <button id="btn_attribute">Set Attribute</button>
+
+    <script>
+      $(function () {
+        $("#btn_attribute").click(function () {
+          $("a").attr("href", "https://openai.com/blog/chatgpt/");
+          $("a").text("Chat GPT");
+        });
+      });
+    </script>
+
+    <hr />
+
+    <h3>Set</h3>
+    <p id="set_paragraph">this is <b>Paragraph</b> elements</p>
+    <div>input field : <input type="text" id="ipt_value" /></div>
+
+    <button id="set_btn_html">Set Html</button>
+    <button id="set_btn_text">Set Text</button>
+    <button id="set_btn_value">Set Value</button>
+
+    <script>
+      // $(document).ready(function () {
+      $(function () {
+        // get
+        $("#set_btn_html").click(function () {
+          $("#set_paragraph").html("<b>Hello World! With HTML</b>");
+        });
+
+        $("#set_btn_text").click(function () {
+          $("#set_paragraph").text("Hello World! With Text");
+        });
+
+        $("#set_btn_value").click(function () {
+          $("#ipt_value").val("Hello World! With Value");
+        });
+      });
+    </script>
+
+    <hr />
+
+    <h3>Get</h3>
+    <p>this is <b>Paragraph</b> elements</p>
+    <button id="show_btn_html">Show Html</button>
+    <button id="show_btn_text">Show Text</button>
+
+    <script>
+      // $(document).ready(function () {
+      $(function () {
+        // get
+        $("#show_btn_html").click(function () {
+          alert($("p").html());
+        });
+
+        $("#show_btn_text").click(function () {
+          alert($("p").text());
+        });
+      });
+    </script>
+  </body>
+</html>
